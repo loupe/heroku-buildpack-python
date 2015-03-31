@@ -31,7 +31,8 @@ ENV_DIR=$3
 VIRTUALENV_LOC=".heroku/venv"
 LEGACY_TRIGGER="lib/python2.7"
 
-DEFAULT_PYTHON_VERSION="python-2.7.11"
+
+DEFAULT_PYTHON_VERSION="python-2.7.7"
 DEFAULT_PYTHON_STACK="cedar-14"
 PYTHON_EXE="/app/.heroku/python/bin/python"
 PIP_VERSION="8.1.1"
@@ -40,6 +41,7 @@ SETUPTOOLS_VERSION="20.4"
 # Common Problem Warnings
 export WARNINGS_LOG=$(mktemp)
 export RECOMMENDED_PYTHON_VERSION=$DEFAULT_PYTHON_VERSION
+
 
 # Setup bpwatch
 export PATH=$PATH:$ROOT_DIR/vendor/bpwatch
