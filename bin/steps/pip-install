@@ -14,6 +14,14 @@ fi
 
 
 set +e
+
+# these env vars have to be passed through to pip install at buildpack time
+for var in UWSGI_EMBED_PLUGINS ; do
+  if test -f ${ENV_DIR}/${var} ; then
+    eval "export $var=$(cat ${ENV_DIR}/$var)"
+  fi
+done
+
 /app/.heroku/python/bin/pip install -r requirements.txt --exists-action=w --src=./.heroku/src --disable-pip-version-check --no-cache-dir $CLIENT_CERT 2>&1 | tee $WARNINGS_LOG | cleanup | indent
 PIP_STATUS="${PIPESTATUS[0]}"
 set -e
