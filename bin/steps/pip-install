@@ -15,6 +15,8 @@ fi
 
 puts-cmd "client_cert: ${CLIENT_CERT}"
 set +e
+set -x
+cat ${ENV_DIR}/CLIENT_CERT
 /app/.heroku/python/bin/pip install -r requirements.txt --exists-action=w --src=./.heroku/src --disable-pip-version-check --no-cache-dir $CLIENT_CERT 2>&1 | tee $WARNINGS_LOG | cleanup | indent
 PIP_STATUS="${PIPESTATUS[0]}"
 set -e
